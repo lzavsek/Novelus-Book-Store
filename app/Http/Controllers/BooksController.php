@@ -34,6 +34,7 @@ class BooksController extends Controller
      */
     public function create()
     {
+        $this->middleware('auth');
         //
     }
 
@@ -45,6 +46,11 @@ class BooksController extends Controller
      */
     public function store(Request $request)
     {
+        $this->middleware('auth');
+        $is_admin = auth()->user()->is_admin;
+        if (!$is_admin)
+            abort(403);
+            
         $attributes = $request->validate([
             'title' => 'required',
             'author' => 'required',
@@ -76,6 +82,7 @@ class BooksController extends Controller
      */
     public function edit(Book $book)
     {
+        $this->middleware('auth');
         //
     }
 
@@ -88,6 +95,7 @@ class BooksController extends Controller
      */
     public function update(Request $request, Book $book)
     {
+        $this->middleware('auth');
         //
     }
 
@@ -99,6 +107,7 @@ class BooksController extends Controller
      */
     public function destroy(Book $book)
     {
+        $this->middleware('auth');
         //
     }
 }
