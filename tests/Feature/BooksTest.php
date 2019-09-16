@@ -75,7 +75,7 @@ class BooksTest extends TestCase
         
         $response = $this->get('/books');
         $response->assertSuccessful();
-		$response->assertViewIs('articles.index');
-		$response->assertViewHas('articles');
+		$response->assertViewIs('books.index');
+		$response->assertViewHas('books');
     }
 }
