@@ -19,7 +19,7 @@ class BooksTest extends TestCase
     /** @test */
     public function an_admin_can_create_a_book()
     {
-        //$this->withoutExceptionHandling();
+        $this->withoutExceptionHandling();
         
         // Given I am logged in as an admin
         $this->actingAs(factory('App\User')->create());

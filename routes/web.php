@@ -19,15 +19,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::middleware('auth')->post('/books', function() {
-    $attributes = request()->validate([
-        'title' => 'required',
-        'author' => 'required',
-        'year' => 'required',
-        'quantity' => 'required'
-    ]);
-    
-    App\Book::create($attributes);
-    
-    return redirect('/');
-});
+Route::resource('books', 'BooksController');
+
