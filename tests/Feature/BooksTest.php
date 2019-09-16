@@ -66,4 +66,16 @@ class BooksTest extends TestCase
             );
         }
     }
+    
+    
+    /** @test */
+    public function guests_can_view_a_list_of_books()
+    {
+        $this->withoutExceptionHandling();
+        
+        $response = $this->get('/books');
+        $response->assertSuccessful();
+		$response->assertViewIs('articles.index');
+		$response->assertViewHas('articles');
+    }
 }
